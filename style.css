@@ -1,0 +1,77 @@
+h1 {
+    text-align: center;
+}
+
+.grid-container {
+    box-sizing: border-box;
+    width: 50%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    padding: 10px;
+    grid-gap: 10px
+}
+
+.grid-item {
+    background-color: lightgray;
+    border-radius: 5%;
+    padding: 20px;
+    text-align: center;
+}
+
+.scores-container {
+    box-sizing: border-box;
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    padding: 10px;
+    grid-gap: 10px
+}
+
+.scores {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: lightgray;
+    border-radius: 5%;
+    padding: 20px;
+    text-align: center;
+}
+
+.guess {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.show {
+    grid-column-start: 6;
+}
+
+.left {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+}
+
+.right {
+    grid-column-start: 6;
+    grid-row-start: 2;
+}
+
+.second {
+display: none;
+}
+
+.third {
+display: none;
+}
+
+.fourth {
+display: none;
+}
+
+.fifth {
+display: none;
+}
