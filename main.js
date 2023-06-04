@@ -26,16 +26,39 @@
     // const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
     // let guessCount;
     
+    let countDown = document.getElementById("numberElement");
+    let count = 6;
+    countDown.innerHTML = count;
     const word = "VORTEX";
     const buttons = document.querySelectorAll("button");
     let resultEl = document.getElementById("result");
     buttons.forEach(function(button) {
         button.addEventListener("click", function() {
+            let cnt = Number(countDown.innerHTML) - 1;
+            countDown.innerHTML = cnt;
             let buttonLetter = this.innerText;
             if (word.includes(buttonLetter)) {
                 resultEl.innerText = `The letter ${buttonLetter} exists in the word!`;
             } else {
-                resultEl.innerText = `The word has no letter ${buttonLetter}, try again!`;
+                resultEl.innerText = `There is no letter ${buttonLetter} in this word, try again!`;
             }
         })
+    })
+
+
+    const wordButton = document.getElementById("guessWord");
+    let inputField = document.getElementById("input");
+    inputField.addEventListener("input", function() {
+        let inputValue = inputField.value;
+        let convertedValue = inputValue.toUpperCase();
+        inputField.value = convertedValue;
+    })
+    wordButton.addEventListener("click", function() {
+        let buttonWord = inputField.value;
+        inputField.value = "";
+        if(buttonWord === word) {
+                resultEl.innerText = "You guessed the word!";
+        } else {
+            resultEl.innerText = "Oops! Try again...";
+        }
     })
