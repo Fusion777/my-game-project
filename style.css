@@ -21,11 +21,13 @@ h2 {
 }
 
 .grid-item {
-    background-color: lightgray;
+    background-color: black;
     border-radius: 5%;
     padding: 20px;
     text-align: center;
 }
+
+
 
 .scores-container {
     box-sizing: border-box;

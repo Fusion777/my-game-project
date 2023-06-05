@@ -26,24 +26,42 @@
     // const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
     // let guessCount;
     
+    const word = "VORTEX";
     let countDown = document.getElementById("numberElement");
     let count = 6;
     countDown.innerHTML = count;
-    const word = "VORTEX";
     const buttons = document.querySelectorAll("button");
     let resultEl = document.getElementById("result");
+    const buttonsGrid = document.querySelectorAll(".letters-container button");
+    const gridItems = document.querySelectorAll(".grid-item");
+
     buttons.forEach(function(button) {
         button.addEventListener("click", function() {
-            let cnt = Number(countDown.innerHTML) - 1;
+            let cnt = Number(countDown.innerHTML) - 1;           
             countDown.innerHTML = cnt;
             let buttonLetter = this.innerText;
             if (word.includes(buttonLetter)) {
                 resultEl.innerText = `The letter ${buttonLetter} exists in the word!`;
+                
             } else {
                 resultEl.innerText = `There is no letter ${buttonLetter} in this word, try again!`;
             }
         })
     })
+
+    buttonsGrid.forEach(function(button) {
+        button.addEventListener("click", function() {
+          const buttonLetter = this.innerText;
+      
+          gridItems.forEach(function(gridItem) {
+            if (gridItem.innerText === buttonLetter) {
+              gridItem.style.backgroundColor = "lightgray";
+            } else {
+              button.style.backgroundColor = 'blue';
+            }
+          });
+        });
+      });
 
 
     const wordButton = document.getElementById("guessWord");
