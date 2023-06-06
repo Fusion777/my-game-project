@@ -26,7 +26,7 @@
     // const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
     // let guessCount;
     
-    const word = "VORTEX";
+    const word = "WINDOW";
     let countDown = document.getElementById("numberElement");
     let count = 6;
     countDown.innerHTML = count;
@@ -34,10 +34,24 @@
     let resultEl = document.getElementById("result");
     const buttonsGrid = document.querySelectorAll(".letters-container button");
     const gridItems = document.querySelectorAll(".grid-item");
+    let scoresBoard = document.querySelector(".scores");
+    
+
+    // function to reset when game lost:
+    // function lost() {
+    //     resultEl.innerText = "You lose!";
+    //     gridItems.forEach(function(gridItem) {
+    //         gridItem.style.backgroundColor = "lightgray";
+    //     });
+    //     buttons.forEach(function(button) {
+    //         button.style.backgroundColor = "";
+    //     });
+    //     scoresBoard.style.display = "none";
+    // }
 
     buttons.forEach(function(button) {
         button.addEventListener("click", function() {
-            let cnt = Number(countDown.innerHTML) - 1;           
+            let cnt = Number(countDown.innerHTML) - 1;
             countDown.innerHTML = cnt;
             let buttonLetter = this.innerText;
             if (word.includes(buttonLetter)) {
@@ -48,6 +62,8 @@
             }
         })
     })
+
+    
 
     buttonsGrid.forEach(function(button) {
         button.addEventListener("click", function() {
@@ -75,8 +91,22 @@
         let buttonWord = inputField.value;
         inputField.value = "";
         if(buttonWord === word) {
-                resultEl.innerText = "You guessed the word!";
+            resultEl.innerText = "You guessed the word!";
+            correctWord();
         } else {
             resultEl.innerText = "Oops! Try again...";
         }
     })
+
+    function correctWord() {
+        resultEl.innerText = "You guessed the word!";
+        gridItems.forEach(function(gridItem) {
+            gridItem.style.backgroundColor = "lightgray";
+        });
+        buttons.forEach(function(button) {
+            button.style.backgroundColor = "";
+        });
+        scoresBoard.style.display = "none";
+        countDown.innerText = 0;
+        buttonsGrid.style.display = "none";
+    }
